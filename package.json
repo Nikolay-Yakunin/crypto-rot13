@@ -1,6 +1,23 @@
 {
+  "scripts": {
+    "serve": "node server/server.js",
+    "build": "webpack --config webpack.config.js"
+  },
   "dependencies": {
     "mime": "^4.0.7",
     "mime-types": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "postcss-loader": "^8.1.1",
+    "postcss-preset-env": "^10.1.6",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^6.0.1"
   }
 }
