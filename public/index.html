@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ROT13 Encryption/Decryption</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Header -->
+      <header class="app__header">
+        <div class="header__title">
+          <span class="note-date">ИСП - 31</span>
+          <span class="note-separator">|</span>
+          <span class="note-name">Якунин Николай Владимирович</span>
+        </div>
+        <div class="header__actions">
+          <button class="btn icon">⚙️</button>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="app__main">
+        <!-- Левая панель: ввод и управление -->
+        <section class="panel panel--editor">
+          <div class="panel__header">
+            <button class="btn panel__tab">Input</button>
+            <!-- Добавляем переключатели режима прямо в шапку -->
+            <label class="panel__control">
+              <input type="radio" name="mode" value="encrypt" checked />
+              Шифровать
+            </label>
+            <label class="panel__control">
+              <input type="radio" name="mode" value="decrypt" /> Дешифровать
+            </label>
+          </div>
+          <div class="panel__body">
+            <!-- Поле ввода -->
+            <textarea
+              id="textInput"
+              class="panel__textarea"
+              placeholder="Начните вводить текст…"
+              spellcheck="false"
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- Правая панель: вывод результата -->
+        <section class="panel panel--copilot">
+          <div class="panel__header">
+            <button class="btn panel__tab">Output</button>
+          </div>
+          <div class="panel__body">
+            <!-- Здесь будет текст результата -->
+            <pre id="textOutput" class="panel__output">
+Результат появится здесь…</pre
+            >
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
