@@ -2,9 +2,14 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ROT13 Encryption/Decryption — простой интерфейс для шифрования и дешифрования текста методом ROT13" />
+    <link rel="icon" href="0d0099046741ad4cfec2.ico" type="image/x-icon" />
     <title>ROT13 Encryption/Decryption</title>
     <link rel="stylesheet" href="b88d04fba731603756b1.css" />
-  <script defer src="bundle.js"></script><link href="main.048cf9ee400b35a62f9d.css" rel="stylesheet"></head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#317EFB" />
+  <script defer src="bundle.js"></script><link href="main.e38341e24536fa4820ec.css" rel="stylesheet"></head>
   <body>
     <div class="app">
       <!-- Header -->
@@ -14,9 +19,6 @@
           <span class="note-separator">|</span>
           <span class="note-name">Якунин Николай Владимирович</span>
         </div>
-        <div class="header__actions">
-          <button class="btn icon">⚙️</button>
-        </div>
       </header>
 
       <!-- Main content -->
@@ -25,7 +27,7 @@
         <section class="panel panel--editor">
           <div class="panel__header">
             <button class="btn panel__tab">Input</button>
-            <!-- Добавляем переключатели режима прямо в шапку -->
+            <!-- Смена режима -->
             <label class="panel__control">
               <input type="radio" name="mode" value="encrypt" checked />
               Шифровать
@@ -51,12 +53,11 @@
             <button class="btn panel__tab">Output</button>
           </div>
           <div class="panel__body">
-            <!-- Здесь будет текст результата -->
             <pre id="textOutput" class="panel__output">Результат появится здесь…</pre>
           </div>
         </section>
       </main>
     </div>
-    <script src="9017186ac16a1740a568.js"></script>
+    <script src="2ce1dd9f6947de852ba9.js"></script>
   </body>
 </html>

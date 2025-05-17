@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -10,7 +11,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'public'),
-        clean: true,
+        clean: false,
     },
 
     module: {
@@ -54,6 +55,16 @@ module.exports = {
     devtool: 'source-map',
 
     plugins: [
+        new CleanWebpackPlugin({
+            cleanOnceBeforeBuildPatterns: [
+              '**/*',
+              '!images/**',
+              '!fonts/**',
+              '!favicon.ico'
+            ],
+            cleanStaleWebpackAssets: true,
+            protectWebpackAssets: false,
+          }),
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'src', 'template', 'index.html'),
         }),

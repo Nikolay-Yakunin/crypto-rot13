@@ -1,3 +1,6 @@
+/*!***********************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/styles/styles.css ***!
+  \***********************************************************************************************************************************************/
 * {
   margin: 0;
   padding: 0;
@@ -15,6 +18,7 @@ body {
   padding: 0 16px;
   display: grid;
   grid-template-rows: auto 1fr;
+  grid-row-gap: 24px;
   row-gap: 24px;
 }
 
@@ -50,7 +54,9 @@ body {
 .app__main {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 16px;
+  grid-column-gap: 16px;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
 }
 
 /* Общие стили панелей */
@@ -96,6 +102,9 @@ body {
 .panel__output {
   line-height: 1.05;
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  word-wrap: anywhere;
   word-break: break-all;
 }
+
+
+/*# sourceMappingURL=main.e38341e24536fa4820ec.css.map*/
