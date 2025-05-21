@@ -7,14 +7,22 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const pagesDir = path.resolve(__dirname, 'src', 'pages');
 const htmlPageNames = fs.readdirSync(pagesDir).filter(fileName => fileName.endsWith('.html'));
 
+const stylesDir = path.resolve(__dirname, 'src', 'styles');
+const stylesPageNames = fs.readdirSync(stylesDir).filter(fileName => fileName.endsWith('.css'));
+
 const multipleHtmlPlugins = htmlPageNames.map(name => {
     return new HtmlWebpackPlugin({
-      template: path.resolve(pagesDir, name),
-      filename: name,
-      inject: 'body',
+        template: path.resolve(pagesDir, name),
+        filename: name,
+        inject: 'body',
     });
-  });
+});
 
+const multipleStylesPlugins = stylesPageNames.map(name => {
+    return new MiniCssExtractPlugin({
+        filename: name,
+    })
+});
 
 module.exports = {
     mode: 'development',

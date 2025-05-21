@@ -116,3 +116,29 @@ a:active, a:visited {
     display: none;
   }
 }
+
+
+/* 404 */
+
+#title-404 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+}
+
+#text-404 {
+  font-size: 16px;
+  color: #666;
+}
+
+.app__main--404 {
+  margin-top: 100px;
+  text-align: center;
+  margin-bottom: 100px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
