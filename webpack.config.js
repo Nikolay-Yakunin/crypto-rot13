@@ -1,7 +1,20 @@
 const path = require('path');
+const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const pagesDir = path.resolve(__dirname, 'src', 'pages');
+const htmlPageNames = fs.readdirSync(pagesDir).filter(fileName => fileName.endsWith('.html'));
+
+const multipleHtmlPlugins = htmlPageNames.map(name => {
+    return new HtmlWebpackPlugin({
+      template: path.resolve(pagesDir, name),
+      filename: name,
+      inject: 'body',
+    });
+  });
+
 
 module.exports = {
     mode: 'development',
@@ -9,9 +22,9 @@ module.exports = {
     entry: path.resolve(__dirname, 'src', 'index.js'),
 
     output: {
-        filename: 'bundle.js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'public'),
-        clean: false,
+        clean: false
     },
 
     module: {
@@ -57,19 +70,17 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: [
-              '**/*',
-              '!images/**',
-              '!fonts/**',
-              '!favicon.ico'
+                '**/*',
+                '!images/**',
+                '!fonts/**',
+                '!favicon.ico'
             ],
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false,
-          }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, 'src', 'template', 'index.html'),
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css',
         }),
+        ...multipleHtmlPlugins,
     ],
 };

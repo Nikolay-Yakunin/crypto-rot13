@@ -9,8 +9,14 @@ const PUBLIC_DIR = process.env.PUBLIC_DIR
 
 const PORT = parseInt(process.env.PORT, 10) || 3000;
 
+const routes = {
+  '/': '/index.html',
+  '/info': '/info.html',
+  '/contact': '/contact.html',
+}
+
 function handleRequest(req, res) {
-  const relPath = req.url === '/' ? '/index.html' : req.url;
+  const relPath = routes[req.url] || req.url;
   const absPath = path.join(PUBLIC_DIR, relPath);
 
   fs.stat(absPath, (err, stats) => {

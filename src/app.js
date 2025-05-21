@@ -1,4 +1,3 @@
-// src/app.js
 import { cryptRot13, decryptRot13 } from './rot13/rot13.js';
 
 const DEBOUNCE_DELAY = 300;
