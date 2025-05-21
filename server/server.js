@@ -12,7 +12,7 @@ const PORT = parseInt(process.env.PORT, 10) || 3000;
 const routes = {
   '/': '/index.html',
   '/info': '/info.html',
-  '/contact': '/contact.html',
+  '/404': '/404.html',
 }
 
 function handleRequest(req, res) {
@@ -21,8 +21,8 @@ function handleRequest(req, res) {
 
   fs.stat(absPath, (err, stats) => {
     if (err || !stats.isFile()) {
-      res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-      res.end('404 Not Found');
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+      fs.createReadStream(path.join(PUBLIC_DIR, '/404.html')).pipe(res);
       return;
     }
 
