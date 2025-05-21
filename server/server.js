@@ -66,8 +66,15 @@ function handleRequest(req, res) {
 
 const server = http.createServer(handleRequest);
 
-server.listen(PORT, () => {
-  logger.info(`Сервер запущен на порту ${PORT}: http://localhost:${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+  const ip = require('os').networkInterfaces();
+  const addresses = Object.values(ip)
+    .flat()
+    .filter((iface) => iface.family === 'IPv4' && !iface.internal)
+    .map((iface) => iface.address);
+    
+  logger.info(`Сервер доступен по следующим адресам:`);
+  addresses.forEach(addr => logger.info(`http://${addr}:${PORT}`));
 });
 
 server.on('error', (err) => {
