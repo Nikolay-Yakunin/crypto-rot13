@@ -2,18 +2,13 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const mime = require('mime-types');
+const routes = require('./routes');
 
 const PUBLIC_DIR = process.env.PUBLIC_DIR
   ? path.resolve(process.env.PUBLIC_DIR)
   : path.join(__dirname, '../public');
 
 const PORT = parseInt(process.env.PORT, 10) || 3000;
-
-const routes = {
-  '/': '/index.html',
-  '/info': '/info.html',
-  '/404': '/404.html',
-}
 
 function handleRequest(req, res) {
   const relPath = routes[req.url] || req.url;
