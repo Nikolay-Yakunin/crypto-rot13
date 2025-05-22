@@ -5,9 +5,12 @@ const mime = require('mime-types');
 const routes = require('./routes');
 const logger = require('./logger');
 const client = require('prom-client');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const PUBLIC_DIR = process.env.PUBLIC_DIR
-  ? path.resolve(process.env.PUBLIC_DIR)
+  ? path.join(__dirname, process.env.PUBLIC_DIR)
   : path.join(__dirname, '../public');
 
 const PORT = parseInt(process.env.PORT, 10) || 3000;
@@ -20,6 +23,8 @@ const httpRequestCounter = new client.Counter({
   help: 'Общее число HTTP-запросов',
   labelNames: ['method', 'route', 'statusCode'],
 });
+
+
 
 function handleRequest(req, res) {
   logger.debug(`Получен запрос: ${req.method} ${req.url}`);
@@ -72,7 +77,6 @@ server.listen(PORT, '0.0.0.0', () => {
     .flat()
     .filter((iface) => iface.family === 'IPv4' && !iface.internal)
     .map((iface) => iface.address);
-    
   logger.info(`Сервер доступен по следующим адресам:`);
   addresses.forEach(addr => logger.info(`http://${addr}:${PORT}`));
 });
